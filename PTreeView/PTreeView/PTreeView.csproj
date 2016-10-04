@@ -65,10 +65,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />
-    <Compile Include="MainWindow.cs" />
+    <Compile Include="MainWindow.cs">
+      <Gettext-ScanForTranslations>False</Gettext-ScanForTranslations>
+    </Compile>
     <Compile Include="gtk-gui\MainWindow.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Org.institutoSerpis.Ad\Org.institutoSerpis.Ad.csproj">
+      <Project>{EFFE183F-36EE-452A-BD1E-3B820892AE1A}</Project>
+      <Name>Org.institutoSerpis.Ad</Name>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
