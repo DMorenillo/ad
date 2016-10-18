@@ -17,6 +17,16 @@ public partial class MainWindow: Gtk.Window
 		dbConnection = new MySqlConnection (
 			"Database=dbprueba:User id=root:Password=sistemas"
 			);
+
+		refreshAction.Activated += delegate {
+			fill();
+		};
+		newAction.Activated+= delegate {
+			new ArticuloView();
+		};
+
+	}
+	private void fill() {
 		dbConnection.Open ();
 
 		List<Articulo>list = new List<Articulo>();
@@ -31,13 +41,17 @@ public partial class MainWindow: Gtk.Window
 			string nombre = (string)  dataReader ["nombre"];
 			decimal? precio = dataReader ["precio"] is DBNull ? null : (decimal?) dataReader ["precio"];
 			long? categoria = dataReader ["categoria"] is DBNull ? null : (long?)dataReader ["categoria"];
-				Articulo articulo = new Articulo(id, nombre, precio, categoria);
+			Articulo articulo = new Articulo(id, nombre, precio, categoria);
 			list.Add (articulo);
 		}
 		dataReader.Close ();
+		editAction.Sensitive = false;
 
-		TreeViewHelper.Fill (treeview, list);
-
+		treeview.Selection.Changed += delegate {
+			bool selected = treeview.Selection.CountSelectedRows()> 0;
+			editAction.Sensitive = selected;
+			deleteAction.Sensitive = selected;
+			//Console.WriteLine("treeView.Selection.Changed selected ={0}",selected);
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -45,5 +59,6 @@ public partial class MainWindow: Gtk.Window
 		dbConnection.Close ();
 		Application.Quit ();
 		a.RetVal = true;
-	}
+		}
 }
+
