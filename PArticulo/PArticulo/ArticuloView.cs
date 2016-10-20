@@ -14,13 +14,18 @@ namespace PArticulo
 			saveAction.Sensitive = false;
 
 			List<Categoria> list = new List<Categoria> ();
-			list.Add (new Categoria (1L, "categproa1"));
-			list.Add (new Categoria (2L, "categproa2"));
+			list.Add (new Categoria (1L, "categoria1"));
+			list.Add (new Categoria (2L, "categoria2"));
 			ListStore liststore = new ListStore (typeof(object));
 			foreach (object item in list)
 				liststore.AppendValues (item);
-
-			comboBoxCategoria.PackStart
+			CellRendererText cellRendererText = new CellRendererText ();
+			comboBoxCategoria.PackStart (CellRendererText, false);
+				comboBoxCategoria.SetCellDataFunc(cellRendererText, 
+				                                  delegate (CellLayout cell_layout,CellRenderer cell, TreeModel tree_model, TreeIter iter){
+				Categoria categoria = (Categoria)tree_model.GetValue(iter,0);
+				cellRendererText.Text = categoria.Nombre;
+				});
 			comboBoxCategoria.Model = liststore;
 
 			entryNombre.Changed+= delegate {
@@ -33,7 +38,7 @@ namespace PArticulo
 		}
 	}
 	public class Categoria {
-		public Categoria (long id, string nombre, decimal? precio, long? categoria) {
+		public Categoria (long id, string nombre) {
 			Id = id;
 			Nombre = nombre;
 		}
