@@ -17,6 +17,7 @@ namespace dbprueba
 
 			IDataReader dataReader;
 			string cat;
+			string ideliminar;
 		do {
 			Console.WriteLine ("Elige la opcion que desea realizar:");
 			Console.WriteLine ("1 Nuevo");
@@ -59,10 +60,18 @@ namespace dbprueba
 				dbDataParameter2.Value = idint;
 				dbCommand.Parameters.Add (dbDataParameter);
 				dbCommand.Parameters.Add (dbDataParameter2);
-				dbCommand.ExecuteNonQuery;
+				dbCommand.ExecuteNonQuery();
+				dbCommand.Dispose();
 				break;
 			case '3':
-			
+					dbCommand.CommandText = "delete from categoria where id=@ideliminar";
+
+					dbDataParameter.ParameterName = "ideliminar";
+					Console.WriteLine ("Introduce una ID para eliminar");
+					ideliminar = Console.ReadLine();
+					dbDataParameter.Value= ideliminar;
+					dbCommand.Parameters.Add (dbDataParameter);
+					dbCommand.ExecuteNonQuery ();
 
 				break;
 			case '4':
@@ -84,7 +93,7 @@ namespace dbprueba
 				};
 
 
-			} while(dbConnection=!null);
+			} while(dbConnection=null);
 		}
 	}
 }
