@@ -79,7 +79,13 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="ArticuloView.cs" />
     <Compile Include="gtk-gui\PArticulo.ArticuloView.cs" />
-    <Compile Include="Properties\App.cs" />
+    <Compile Include="App.cs">
+      <DependentUpon>Program.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DbCommandHelper.cs" />
+    <Compile Include="Categoria.cs" />
+    <Compile Include="ArticuloDAO.cs" />
+    <Compile Include="CategoriaDAO.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
