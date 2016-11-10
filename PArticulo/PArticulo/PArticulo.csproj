@@ -62,6 +62,7 @@
     </Reference>
     <Reference Include="Org.institutoSerpis.Ad">
       <HintPath>..\..\PTreeView\Org.institutoSerpis.Ad\bin\Debug\Org.institutoSerpis.Ad.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
   </ItemGroup>
@@ -82,10 +83,11 @@
     <Compile Include="App.cs">
       <DependentUpon>Program.cs</DependentUpon>
     </Compile>
-    <Compile Include="DbCommandHelper.cs" />
     <Compile Include="Categoria.cs" />
     <Compile Include="ArticuloDAO.cs" />
     <Compile Include="CategoriaDAO.cs" />
+    <Compile Include="DbCommandHelper.cs" />
+    <Compile Include="ComboBoxHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

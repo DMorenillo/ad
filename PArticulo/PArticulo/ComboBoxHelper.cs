@@ -2,8 +2,7 @@ using Gtk;
 using System;
 using System.Collections;
 using System.Reflection;
-using Org.institutoSerpis.Ad;
-
+using Org.InstitutoSerpis.Ad;
 namespace Org.InstitutoSerpis.Ad
 {
 	public class ComboBoxHelper

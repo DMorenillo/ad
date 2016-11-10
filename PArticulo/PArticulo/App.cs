@@ -12,7 +12,7 @@ namespace Org.InstitutoSerpis.Ad
 			get { return instance;}
 		}
 		private IDbConnection dbConnection;
-		public IDbConnection dbConnection {
+		public IDbConnection DbConnection{
 			get { return dbConnection; }
 			set { dbConnection = value;}
 		}

@@ -12,4 +12,3 @@ namespace PArticulo
 		public string Nombre { get; set; }
 	}
 }
-
