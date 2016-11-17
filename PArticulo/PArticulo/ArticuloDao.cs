@@ -1,7 +1,7 @@
-
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Reflection;
 
 using Org.InstitutoSerpis.Ad;
 
@@ -27,7 +27,24 @@ namespace PArticulo
 			dataReader.Close ();
 			return list;
 		}
+		private const string SELECT_ID_SQL = "select * from articulo";
+		public static Articulo Load(long id) {
+			IDbCommand dbCommand = App.Instance.DbConnection.CreateCommand ();
+			dbCommand.CommandText = SELECT_ID_SQL;
+			DbCommandHelper.AddParameter (dbCommand, "id", id);
+			IDataReader dataReader = dbCommand.ExecuteReader ();
+			dataReader.Read()
+			
+				long id = (long)dataReader ["id"];
+				string nombre = (string)dataReader ["nombre"];
+				decimal? precio = dataReader ["precio"] is DBNull ? null : (decimal?)dataReader ["precio"];
+				long? categoria = dataReader["categoria"] is DBNull ? null : (long?)dataReader["categoria"];
+				Articulo articulo = new Articulo(id, nombre, precio, categoria);
+				
 
+			dataReader.Close ();
+			return articulo;
+		}
 		private const string INSERT_SQL = "insert into articulo (nombre, precio, categoria) " +
 			"values (@nombre, @precio, @categoria)";
 		public static void Save(Articulo articulo) {
@@ -39,12 +56,14 @@ namespace PArticulo
 			dbCommand.ExecuteNonQuery();
 		}
 
-		private const string DELETE_SQL =" delete from articulo where id = @id";
-		public static void Delete (object id) {
+		private const string DELETE_SQL = "delete from articulo where id = @id";
+		public static void Delete(object id) {
 			IDbCommand dbCommand = App.Instance.DbConnection.CreateCommand ();
 			dbCommand.CommandText = DELETE_SQL;
 			DbCommandHelper.AddParameter (dbCommand, "id", id);
-			// TODO lanzar exception si no elimina ningun registro
+			dbCommand.ExecuteNonQuery ();
+			//TODO lanzar exception si no elimina ningún registro
 		}
 	}
 }
+

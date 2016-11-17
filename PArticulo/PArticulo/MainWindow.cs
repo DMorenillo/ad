@@ -14,7 +14,7 @@ public partial class MainWindow: Gtk.Window
 		Build ();
 		App.Instance.DbConnection = new MySqlConnection (
 			"Database=dbprueba;User Id=root;Password=sistemas"
-			);
+		);
 		App.Instance.DbConnection.Open ();
 
 		fill ();
@@ -30,19 +30,8 @@ public partial class MainWindow: Gtk.Window
 		};
 
 		deleteAction.Activated += delegate {
-			MessageDialog messageDialog = new MessageDialog(
-				this,
-				DialogFlags.Modal,
-				MessageType.Question,
-				ButtonsType.YesNo,
-				"¿Quieres eliminar el registro?"
-				);
-			ResponseType response = (ResponseType)messageDialog.Run();
-			messageDialog.Destroy();
-			if (response != ResponseType.Yes)
-				return;
-
-
+			if (WindowHelper.Confirm(this, "¿Quieres eliminarrrr el registro?"))
+				ArticuloDao.Delete(TreeViewHelper.GetId(treeView));
 		};
 
 
@@ -50,16 +39,16 @@ public partial class MainWindow: Gtk.Window
 			fill();
 		};
 
-		new ArticuloView ();
+
 	}
 
 	private void fill() {
 		editAction.Sensitive = false;
 		deleteAction.Sensitive = false;
-		IList list = ArticuloDao.GetList ();
+		//IList list = ArticuloDao.GetList ();
+		IList list = EntityDao.GetList<Articulo> ();
 		TreeViewHelper.Fill (treeView, list);
 	}
-
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
 	{

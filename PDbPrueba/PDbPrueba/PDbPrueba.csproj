@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{81291059-B788-4CB4-B545-1E5C4554846E}</ProjectGuid>
+    <ProjectGuid>{5220ABA6-C2E5-4DD4-B623-201BB7FA0184}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>dbprueba</RootNamespace>
-    <AssemblyName>dbprueba</AssemblyName>
+    <RootNamespace>PDbPrueba</RootNamespace>
+    <AssemblyName>PDbPrueba</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />

@@ -19,3 +19,4 @@ namespace PArticulo
 		public long? Categoria { get; set; }
 	}
 }
+

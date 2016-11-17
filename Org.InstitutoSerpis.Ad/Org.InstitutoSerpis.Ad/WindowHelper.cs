@@ -1,23 +1,22 @@
-using System;
 using Gtk;
+using System;
 
-namespace Org.institutoSerpis.Ad
+namespace Org.InstitutoSerpis.Ad
 {
 	public class WindowHelper
 	{
-		public static bool Confirm (Window parent, string message)
-		{
+		public static bool Confirm(Window parent, string message) {
 			MessageDialog messageDialog = new MessageDialog(
 				parent,
 				DialogFlags.Modal,
 				MessageType.Question,
 				ButtonsType.YesNo,
-				"¿Quieres eliminar el registro?"
+				message
 				);
+			messageDialog.Title = parent.Title;
 			ResponseType response = (ResponseType)messageDialog.Run();
 			messageDialog.Destroy();
 			return response == ResponseType.Yes;
-
 		}
 	}
 }

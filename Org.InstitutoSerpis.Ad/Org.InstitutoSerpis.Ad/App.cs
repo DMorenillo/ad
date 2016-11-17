@@ -1,5 +1,6 @@
 using System;
 using System.Data;
+
 namespace Org.InstitutoSerpis.Ad
 {
 	public class App
@@ -7,13 +8,16 @@ namespace Org.InstitutoSerpis.Ad
 		private App ()
 		{
 		}
-		private App instance = new App();
+
+		private static App instance = new App();
+
 		public static App Instance {
-			get { return instance;}
+			get { return instance; }
 		}
+
 		private IDbConnection dbConnection;
-		public IDbConnection DbConnection{
-			get { return dbConnection; }
+		public IDbConnection DbConnection {
+			get { return dbConnection;}
 			set { dbConnection = value;}
 		}
 	}

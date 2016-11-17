@@ -50,7 +50,7 @@ namespace PArticulo
 			this.table1.RowSpacing = ((uint)(6));
 			this.table1.ColumnSpacing = ((uint)(6));
 			// Container child table1.Gtk.Table+TableChild
-			this.comboBoxCategoria = global::Gtk.ComboBox.NewText ();
+			this.comboBoxCategoria = new global::Gtk.ComboBox ();
 			this.comboBoxCategoria.Name = "comboBoxCategoria";
 			this.table1.Add (this.comboBoxCategoria);
 			global::Gtk.Table.TableChild w3 = ((global::Gtk.Table.TableChild)(this.table1 [this.comboBoxCategoria]));
@@ -70,21 +70,19 @@ namespace PArticulo
 			global::Gtk.Table.TableChild w4 = ((global::Gtk.Table.TableChild)(this.table1 [this.entryNombre]));
 			w4.LeftAttach = ((uint)(1));
 			w4.RightAttach = ((uint)(2));
-			w4.XOptions = ((global::Gtk.AttachOptions)(4));
 			w4.YOptions = ((global::Gtk.AttachOptions)(4));
 			// Container child table1.Gtk.Table+TableChild
 			this.hbox1 = new global::Gtk.HBox ();
 			this.hbox1.Name = "hbox1";
 			this.hbox1.Spacing = 6;
 			// Container child hbox1.Gtk.Box+BoxChild
-			this.spinButtonPrecio = new global::Gtk.SpinButton (1, 100000000, 1);
+			this.spinButtonPrecio = new global::Gtk.SpinButton (-10000000, 10000000, 1);
 			this.spinButtonPrecio.CanFocus = true;
 			this.spinButtonPrecio.Name = "spinButtonPrecio";
 			this.spinButtonPrecio.Adjustment.PageIncrement = 10;
 			this.spinButtonPrecio.ClimbRate = 1;
 			this.spinButtonPrecio.Digits = ((uint)(2));
 			this.spinButtonPrecio.Numeric = true;
-			this.spinButtonPrecio.Value = 1;
 			this.hbox1.Add (this.spinButtonPrecio);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.spinButtonPrecio]));
 			w5.Position = 0;
@@ -101,6 +99,7 @@ namespace PArticulo
 			// Container child table1.Gtk.Table+TableChild
 			this.label1 = new global::Gtk.Label ();
 			this.label1.Name = "label1";
+			this.label1.Xalign = 1F;
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("Nombre");
 			this.table1.Add (this.label1);
 			global::Gtk.Table.TableChild w7 = ((global::Gtk.Table.TableChild)(this.table1 [this.label1]));
@@ -109,6 +108,7 @@ namespace PArticulo
 			// Container child table1.Gtk.Table+TableChild
 			this.label2 = new global::Gtk.Label ();
 			this.label2.Name = "label2";
+			this.label2.Xalign = 1F;
 			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Precio");
 			this.table1.Add (this.label2);
 			global::Gtk.Table.TableChild w8 = ((global::Gtk.Table.TableChild)(this.table1 [this.label2]));
@@ -119,7 +119,8 @@ namespace PArticulo
 			// Container child table1.Gtk.Table+TableChild
 			this.label3 = new global::Gtk.Label ();
 			this.label3.Name = "label3";
-			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Categoria");
+			this.label3.Xalign = 1F;
+			this.label3.LabelProp = global::Mono.Unix.Catalog.GetString ("Categoría");
 			this.table1.Add (this.label3);
 			global::Gtk.Table.TableChild w9 = ((global::Gtk.Table.TableChild)(this.table1 [this.label3]));
 			w9.TopAttach = ((uint)(2));
@@ -135,8 +136,8 @@ namespace PArticulo
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}
-			this.DefaultWidth = 408;
-			this.DefaultHeight = 300;
+			this.DefaultWidth = 431;
+			this.DefaultHeight = 157;
 			this.Show ();
 		}
 	}

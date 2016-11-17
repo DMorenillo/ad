@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6B3B08BC-5F5E-4A6E-81BC-8CE69C9F2DA0}</ProjectGuid>
+    <ProjectGuid>{BD616C74-5239-44FA-8C87-27F47A6F9098}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PArticulo</RootNamespace>
     <AssemblyName>PArticulo</AssemblyName>
@@ -60,11 +60,10 @@
     <Reference Include="MySql.Data">
       <HintPath>..\..\..\..\..\usr\lib\cli\MySql.Data-6.4\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Org.institutoSerpis.Ad">
-      <HintPath>..\..\PTreeView\Org.institutoSerpis.Ad\bin\Debug\Org.institutoSerpis.Ad.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System.Data" />
+    <Reference Include="Org.InstitutoSerpis.Ad">
+      <HintPath>..\..\Org.InstitutoSerpis.Ad\Org.InstitutoSerpis.Ad\bin\Debug\Org.InstitutoSerpis.Ad.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="gtk-gui\gui.stetic">
@@ -80,14 +79,9 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="ArticuloView.cs" />
     <Compile Include="gtk-gui\PArticulo.ArticuloView.cs" />
-    <Compile Include="App.cs">
-      <DependentUpon>Program.cs</DependentUpon>
-    </Compile>
     <Compile Include="Categoria.cs" />
-    <Compile Include="ArticuloDAO.cs" />
-    <Compile Include="CategoriaDAO.cs" />
-    <Compile Include="DbCommandHelper.cs" />
-    <Compile Include="ComboBoxHelper.cs" />
+    <Compile Include="ArticuloDao.cs" />
+    <Compile Include="CategoriaDao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
