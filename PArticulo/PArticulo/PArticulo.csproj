@@ -82,6 +82,7 @@
     <Compile Include="Categoria.cs" />
     <Compile Include="ArticuloDao.cs" />
     <Compile Include="CategoriaDao.cs" />
+    <Compile Include="IEntityDao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

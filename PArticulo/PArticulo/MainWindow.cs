@@ -9,6 +9,8 @@ using PArticulo;
 
 public partial class MainWindow: Gtk.Window
 {	
+	private IEntityDao entityDao;
+
 	public MainWindow (): base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
@@ -16,6 +18,9 @@ public partial class MainWindow: Gtk.Window
 			"Database=dbprueba;User Id=root;Password=sistemas"
 		);
 		App.Instance.DbConnection.Open ();
+//		IDbCommand.dbCommand = App.Instance.DbConnection.CreateCommand ();
+//		dbCommand.CommandText = "update articulo set precio = 0 where precio is null";
+//		db.Command.ExecuteNonQuery ();
 
 		fill ();
 
@@ -26,8 +31,16 @@ public partial class MainWindow: Gtk.Window
 		};
 
 		newAction.Activated += delegate {
-			new ArticuloView();
+			Articulo articulo = new Articulo();
+			articulo.Precio =0; // hasta que permita el null
+			new ArticuloView(articulo);
 		};
+		editAction.Activated += delegate {
+			// Si el metodo load NO fuera estatico se resolveria con una instancia
+			// Articulo articulo = articuloDao.Load(TreeViewHelper.GetId(treeView);
+			Articulo articulo = ArticuloDao.Load(TreeViewHelper.GetId(treeView));
+			new ArticuloView(articulo);
+	};
 
 		deleteAction.Activated += delegate {
 			if (WindowHelper.Confirm(this, "¿Quieres eliminarrrr el registro?"))
@@ -40,6 +53,9 @@ public partial class MainWindow: Gtk.Window
 		};
 
 
+	}
+	public IEntityDao EntityDao {
+		set { entityDao = value;}
 	}
 
 	private void fill() {

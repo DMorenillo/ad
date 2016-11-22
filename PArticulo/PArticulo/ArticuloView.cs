@@ -10,13 +10,18 @@ namespace PArticulo
 {
 	public partial class ArticuloView : Gtk.Window
 	{
-		public ArticuloView () : base(Gtk.WindowType.Toplevel) {
+		public ArticuloView (Articulo articulo) : base(Gtk.WindowType.Toplevel) {
 			this.Build ();
-			spinButtonPrecio.Value = 0; //stetic bug
-			saveAction.Sensitive = false;
+
+			entryNombre.Text = articulo.Nombre;
+			spinButtonPrecio.Value = (double)articulo.Precio;
+			fillComboBoxCategoria (articulo.Categoria);
+			refreshAction ();
+
+
 			saveAction.Activated += delegate {
 				Console.WriteLine ("saveAction.Activated");
-				Articulo articulo = new Articulo();
+				//Articulo articulo = new Articulo();
 				articulo.Nombre = entryNombre.Text;
 				articulo.Precio = (decimal)spinButtonPrecio.Value;
 				articulo.Categoria = (long?)ComboBoxHelper.GetId(comboBoxCategoria);
@@ -28,12 +33,14 @@ namespace PArticulo
 				saveAction.Sensitive = content != string.Empty;
 			};
 
-			fill();
 		}
 
-		private void fill() {
+		private void fillComboBoxCategoria(object categoria) {
 			IList list = CategoriaDao.GetList ();
 			ComboBoxHelper.Fill(comboBoxCategoria, list, "Nombre", null);
+		}
+		private void refreshAction(){
+
 		}
 
 	}

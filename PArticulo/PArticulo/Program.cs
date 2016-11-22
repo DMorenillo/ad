@@ -9,6 +9,7 @@ namespace PArticulo
 		{
 			Application.Init ();
 			MainWindow win = new MainWindow ();
+			win.EntityDao = new ArticuloDao ();
 			win.Show ();
 			Application.Run ();
 		}
